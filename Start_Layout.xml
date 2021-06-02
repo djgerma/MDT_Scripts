@@ -1,0 +1,23 @@
+<LayoutModificationTemplate xmlns:defaultlayout="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" xmlns:start="http://schemas.microsoft.com/Start/2014/StartLayout" xmlns:taskbar="http://schemas.microsoft.com/Start/2014/TaskbarLayout" Version="1" xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification">
+  <LayoutOptions StartTileGroupCellWidth="6" />
+  <DefaultLayoutOverride>
+    <StartLayoutCollection>
+      <defaultlayout:StartLayout GroupCellWidth="6" />
+    </StartLayoutCollection>
+  </DefaultLayoutOverride>
+  <CustomTaskbarLayoutCollection>
+      <defaultlayout:TaskbarLayout>
+        <taskbar:TaskbarPinList>
+          <taskbar:DesktopApp DesktopApplicationLinkPath="%APPDATA%\Microsoft\Windows\Start Menu\Programs\System Tools\File Explorer.lnk" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles%\Internet Explorer\iexplore.exe" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles%\Microsoft Office\root\Office16\OUTLOOK.EXE" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles%\Microsoft Office\root\Office16\WINWORD.EXE" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles%\Microsoft Office\root\Office16\EXCEL.EXE" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles(x86)%\Microsoft Office\root\Office16\OUTLOOK.EXE" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles(x86)%\Microsoft Office\root\Office16\WINWORD.EXE" />
+	  <taskbar:DesktopApp DesktopApplicationLinkPath="%ProgramFiles(x86)%\Microsoft Office\root\Office16\EXCEL.EXE" />
+	</taskbar:TaskbarPinList>
+      </defaultlayout:TaskbarLayout>
+  </CustomTaskbarLayoutCollection>
+</LayoutModificationTemplate>
