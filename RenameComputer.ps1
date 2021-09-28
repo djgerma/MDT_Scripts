@@ -1,5 +1,6 @@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
+Add-Type -AssemblyName PresentationCore,PresentationFramework
 
 $LocalAdmin = "localhost\Administrator"
 $Password = ConvertTo-SecureString "PasswordHere" -AsPlainText -Force
@@ -41,8 +42,21 @@ $form.Topmost = $true
 $form.Add_Shown({$textBox.Select()})
 $result = $form.ShowDialog()
 
-if ($result -eq [System.Windows.Forms.DialogResult]::OK)
+if ($result -eq [System.Windows.Forms.DialogResult]::Cancel) 
+{
+    New-Item -Path "HKLM:\SOFTWARE" -Name MDT
+    New-ItemProperty -Path "HKLM:\SOFTWARE\MDT" -Name "MDT" -Value "NoRename" -PropertyType "String"
+	Exit
+}
+elseif ($result -eq [System.Windows.Forms.DialogResult]::OK)
 {
     $x = $textBox.Text.ToUpper().Trim()
+    
+    if ((gwmi win32_computersystem).partofdomain -eq $true) {
+    [System.Windows.MessageBox]::Show("This Computer is joined to Domain! You will have to enter domain admin username and password to change the computer name! Username must be in this format 'Domain\username'")
+    Rename-Computer -NewName $x -DomainCredential YourDomain\$env:USERNAME -Force
+    } else {
     (Get-WmiObject win32_computersystem).Rename( $x,$Password,$LocalAdmin)
+    }
+ 
 }
